@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            window.onload = function() {
+            const corretAnswer = 'The longest Railroad';
+            const buttons = document.getElementByTagName('button');
+
+
+            for (let i = 0; i < buttons.length; i++) {
+              buttons[i].addEventListener('click', event => {
+                if (event.target.textContent === correctAnswer) {
+                  event.target.style.backgroundColor = 'green';
+                  document.querySelector('.section').insertAdjacentHTML('beforeend', '<p>Correct!</p>');
+                } else {
+                  event.target.style.backgroundColor = 'red';
+                  document.querySelector('.section').insertAdjacentHTML('beforeend', '<p>Incorrect</p>');
+                }
+              });
+            }
+
+
+            const submitButton = document.getElementById('submit-button');
+            const answerInput = document.getElementById('answer');
+
+
+            submitButton.addEventListener('click', event => {
+              const userAnswer = answerInput.value;
+              const secondQuestion = document.querySelector('#second-question');
+              if (userAnswer.toLowerCase() === 'canberra') {
+                answerInput.style.backgroundColor = 'green';
+                secondQuestion.insertAdjacentHTML('afterend', '<p>Correct!</p>');
+              } else {
+                answerInput.style.backgroundColor = 'red';
+                secondQuestion.insertAdjacentHTML('afterend', '<p>Incorrect</p>');
+              }
+            });
+          }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3> which is the longest in the world by mile?</h3>
+                <button class="button-1">The longest river</button>
+                <button class="button-2">The longest wall</button>
+                <button class="button-3">The longest Railroad</button>
+                <button class="button-3">The longest Fingernail</button>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3 id="second-question">What is the capital of Australia?</h3>
+                <input type="text" id="answer">
+                <button id="submit-button">submit</button>
+            </div>
+        </div>
+    </body>
+</html>
